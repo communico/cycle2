@@ -42,12 +42,22 @@ and [advanced download][advanced] pages.)
 
 
 ## Build
-If you want to make changes to Cycle2 and build it yourself, install the Node build dependencies:
+Install the project dependencies:
 <pre>npm install</pre>
-Then run the lint and build scripts:
-<pre>npm run lint
-npm run build</pre>
-The compiled assets are written to the <code>build/</code> directory.
+Then generate the distributable assets:
+<pre>npm run build</pre>
+The compiled files are written to the <code>build/</code> directory, which is no longer tracked in git.
+
+## Development
+Start the local Vite dev server and open the demo page:
+<pre>npm run dev</pre>
+Use <code>npm run preview</code> to run the production preview server.
+
+## Testing
+Run linting and unit tests together:
+<pre>npm test</pre>
+For watch mode during development:
+<pre>npm run test:watch</pre>
 
 ## Copyright and License
 Copyright &copy; 2012-2014 M. Alsup.

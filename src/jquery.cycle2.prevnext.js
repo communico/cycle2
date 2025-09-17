@@ -1,6 +1,50 @@
-/*! prevnext plugin for Cycle2;  version: 20140408 */
+/*! prevnext plugin for Cycle2;  version: 20241105 */
 (function($) {
 "use strict";
+
+function enhanceControlAccess( $elements, label, action ) {
+    if ( !$elements || !$elements.length ) {
+        return;
+    }
+
+    $elements.each(function() {
+        var $el = $( this );
+        var nodeName = ( this.nodeName || '' ).toLowerCase();
+        var hasTabindex = $el.is('[tabindex]');
+        var isButtonLike = nodeName === 'button' || nodeName === 'input' || nodeName === 'select' || nodeName === 'textarea';
+        var isLinkWithHref = nodeName === 'a' && this.hasAttribute('href');
+
+        if ( !isButtonLike && !isLinkWithHref && !hasTabindex ) {
+            $el.attr('tabindex', '0');
+        }
+
+        if ( !$el.attr('role') ) {
+            $el.attr('role', 'button');
+        }
+
+        if ( label && !$el.attr('aria-label') && !$el.attr('aria-labelledby') ) {
+            $el.attr('aria-label', label );
+        }
+
+        $el.off('keydown.cycle');
+        $el.on('keydown.cycle', function( event ) {
+            var key = event.key || event.which;
+            var isSpace = key === ' ' || key === 'Spacebar' || key === 32;
+            var isEnter = key === 'Enter' || key === 13;
+
+            if ( isSpace ) {
+                event.preventDefault();
+                action();
+                return;
+            }
+
+            if ( !isButtonLike && !isLinkWithHref && isEnter ) {
+                event.preventDefault();
+                action();
+            }
+        });
+    });
+}
 
 $.extend($.fn.cycle.defaults, {
     next:           '> .cycle-next',
@@ -8,16 +52,29 @@ $.extend($.fn.cycle.defaults, {
     disabledClass:  'disabled',
     prev:           '> .cycle-prev',
     prevEvent:      'click.cycle',
-    swipe:          false
+    swipe:          false,
+    nextAriaLabel:  'Next slide',
+    prevAriaLabel:  'Previous slide'
 });
 
 $(document).on( 'cycle-initialized', function( e, opts ) {
-    opts.API.getComponent( 'next' ).on( opts.nextEvent, function(e) {
+    var next = opts.API.getComponent( 'next' );
+    var prev = opts.API.getComponent( 'prev' );
+
+    enhanceControlAccess( next, opts.nextAriaLabel, function() {
+        opts.API.next();
+    });
+
+    enhanceControlAccess( prev, opts.prevAriaLabel, function() {
+        opts.API.prev();
+    });
+
+    next.on( opts.nextEvent, function(e) {
         e.preventDefault();
         opts.API.next();
     });
 
-    opts.API.getComponent( 'prev' ).on( opts.prevEvent, function(e) {
+    prev.on( opts.prevEvent, function(e) {
         e.preventDefault();
         opts.API.prev();
     });
@@ -59,8 +116,10 @@ $(document).on( 'cycle-update-view', function( e, opts, slideOpts, currSlide ) {
 
 
 $(document).on( 'cycle-destroyed', function( e, opts ) {
-    opts.API.getComponent( 'prev' ).off( opts.nextEvent );
-    opts.API.getComponent( 'next' ).off( opts.prevEvent );
+    var prev = opts.API.getComponent( 'prev' );
+    var next = opts.API.getComponent( 'next' );
+    prev.off( opts.nextEvent ).off( 'keydown.cycle' );
+    next.off( opts.prevEvent ).off( 'keydown.cycle' );
     opts.container.off( 'swipeleft.cycle swiperight.cycle swipeLeft.cycle swipeRight.cycle swipeUp.cycle swipeDown.cycle' );
 });
 

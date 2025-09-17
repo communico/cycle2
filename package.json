@@ -10,11 +10,17 @@
   },
   "devDependencies": {
     "jshint": "^2.13.6",
-    "terser": "^5.29.2"
+    "jsdom": "^24.0.0",
+    "terser": "^5.29.2",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.5"
   },
   "scripts": {
     "lint": "jshint src/*.js",
     "build": "node scripts/build.js",
-    "test": "npm run lint"
+    "dev": "vite",
+    "preview": "vite preview",
+    "test": "npm run lint && vitest run",
+    "test:watch": "vitest"
   }
 }
