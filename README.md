@@ -42,10 +42,12 @@ and [advanced download][advanced] pages.)
 
 
 ## Build
-If you want to make changes to Cycle2 and build it yourself, you can do so by installing the node build dependencies:
+If you want to make changes to Cycle2 and build it yourself, install the Node build dependencies:
 <pre>npm install</pre>
-and then running grunt
-<pre>grunt</pre>
+Then run the lint and build scripts:
+<pre>npm run lint
+npm run build</pre>
+The compiled assets are written to the <code>build/</code> directory.
 
 ## Copyright and License
 Copyright &copy; 2012-2014 M. Alsup.

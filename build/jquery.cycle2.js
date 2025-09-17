@@ -1,7 +1,7 @@
 /*!
-* jQuery Cycle2; version: 2.1.6 build: 20141007
+* jQuery Cycle2; version: 2.1.6 build: 20250917
 * http://jquery.malsup.com/cycle2/
-* Copyright (c) 2014 M. Alsup; Dual licensed: MIT/GPL
+* Copyright (c) 2025 M. Alsup; Dual licensed: MIT/GPL
 */
 
 /* Cycle2 core engine */
