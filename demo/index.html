@@ -1,38 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cycle2 Development Demo</title>
-  <link rel="stylesheet" href="/demo/styles.css" />
-</head>
-<body>
-  <header class="page-header">
-    <h1>Cycle2 Development Demo</h1>
-    <p>Use the buttons below or press the left and right arrow keys after focusing a control.</p>
-  </header>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Cycle2 Development Demo</title>
+		<link rel="stylesheet" href="/demo/styles.css" />
+	</head>
+	<body>
+		<header class="page-header">
+			<h1>Cycle2 Development Demo</h1>
+			<p>
+				Use the buttons below or press the left and right arrow keys after
+				focusing a control.
+			</p>
+		</header>
 
-  <main>
-    <section class="demo-section">
-      <div class="demo-carousel">
-        <div
-          class="cycle-slideshow"
-          data-cycle-slides="> img"
-          data-cycle-timeout="0"
-        >
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='%23bde0fe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='42' fill='%23003566'>Slide 1</text></svg>" alt="Blue gradient with Slide 1 text" />
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='%23caffbf'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='42' fill='%23004b23'>Slide 2</text></svg>" alt="Green gradient with Slide 2 text" />
-          <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='%23ffd6a5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='42' fill='%23694700'>Slide 3</text></svg>" alt="Orange gradient with Slide 3 text" />
-        </div>
+		<main>
+			<section class="demo-section">
+				<div class="demo-carousel" tabindex="0">
+					<div
+						class="cycle-slideshow"
+						data-cycle-slides="> img"
+						data-cycle-timeout="3000"
+						data-cycle-next=".cycle-next"
+						data-cycle-prev=".cycle-prev"
+						data-cycle-pager=".cycle-pager"
+					>
+						<img
+							src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='%23bde0fe'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='42' fill='%23003566'>Slide 1</text></svg>"
+							alt="Blue gradient with Slide 1 text"
+						/>
+						<img
+							src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='%23caffbf'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='42' fill='%23004b23'>Slide 2</text></svg>"
+							alt="Green gradient with Slide 2 text"
+						/>
+						<img
+							src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='100%' height='100%' fill='%23ffd6a5'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='42' fill='%23694700'>Slide 3</text></svg>"
+							alt="Orange gradient with Slide 3 text"
+						/>
+					</div>
 
-        <div class="demo-controls">
-          <button class="cycle-prev" type="button">Previous slide</button>
-          <button class="cycle-next" type="button">Next slide</button>
-        </div>
-      </div>
-    </section>
-  </main>
+					<div class="demo-controls">
+						<button class="cycle-prev" type="button">Previous slide</button>
+						<button class="cycle-next" type="button">Next slide</button>
+					</div>
+					<div class="cycle-pager"></div>
+				</div>
+			</section>
+		</main>
 
-  <script type="module" src="/demo/main.js"></script>
-</body>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="/src/jquery.cycle2.core.js"></script>
+		<script src="/src/jquery.cycle2.autoheight.js"></script>
+		<script src="/src/jquery.cycle2.caption.js"></script>
+		<script src="/src/jquery.cycle2.command.js"></script>
+		<script src="/src/jquery.cycle2.hash.js"></script>
+		<script src="/src/jquery.cycle2.loader.js"></script>
+		<script src="/src/jquery.cycle2.pager.js"></script>
+		<script src="/src/jquery.cycle2.prevnext.js"></script>
+		<script src="/src/jquery.cycle2.progressive.js"></script>
+		<script src="/src/jquery.cycle2.tmpl.js"></script>
+		<script src="/src/jquery.cycle2.keyboard.js"></script>
+		<script src="/demo/main.js"></script>
+	</body>
 </html>
