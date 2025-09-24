@@ -49,11 +49,13 @@ describe('pause control plugin', () => {
     expect($pause.attr('role')).toBe('button');
     expect($pause.attr('aria-pressed')).toBe('false');
     expect($pause.attr('aria-label')).toBe('Pause slideshow');
+    expect($pause.hasClass('cycle-pause-playing')).toBe(true);
 
     $pause.trigger('click');
 
     expect(api.opts().paused).toBe(true);
     expect($pause.hasClass('cycle-pause-active')).toBe(true);
+    expect($pause.hasClass('cycle-pause-playing')).toBe(false);
     expect($pause.attr('aria-pressed')).toBe('true');
     expect($pause.attr('aria-label')).toBe('Resume slideshow');
 
@@ -62,6 +64,7 @@ describe('pause control plugin', () => {
 
     expect(api.opts().paused).toBe(false);
     expect($pause.hasClass('cycle-pause-active')).toBe(false);
+    expect($pause.hasClass('cycle-pause-playing')).toBe(true);
     expect($pause.attr('aria-pressed')).toBe('false');
     expect($pause.attr('aria-label')).toBe('Pause slideshow');
 
@@ -90,14 +93,17 @@ describe('pause control plugin', () => {
 
     expect($pause.attr('aria-label')).toBe('Toggle playback');
     expect($pause.attr('aria-pressed')).toBe('false');
+    expect($pause.hasClass('cycle-pause-playing')).toBe(true);
 
     api.pause();
     expect($pause.attr('aria-label')).toBe('Toggle playback');
     expect($pause.attr('aria-pressed')).toBe('true');
+    expect($pause.hasClass('cycle-pause-playing')).toBe(false);
 
     api.resume();
     expect($pause.attr('aria-pressed')).toBe('false');
     expect($pause.hasClass('cycle-pause-active')).toBe(false);
+    expect($pause.hasClass('cycle-pause-playing')).toBe(true);
 
     $slideshow.cycle('destroy');
   });

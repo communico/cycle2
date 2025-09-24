@@ -56,6 +56,10 @@ function updateControlState($elements, opts) {
         if (opts.pauseActiveClass) {
             $el.toggleClass(opts.pauseActiveClass, isPaused);
         }
+
+        if (opts.pausePlayingClass) {
+            $el.toggleClass(opts.pausePlayingClass, !isPaused);
+        }
     });
 }
 
@@ -108,6 +112,7 @@ $.extend($.fn.cycle.defaults, {
     pauseControl: '> .cycle-pause',
     pauseControlEvent: 'click.cycle',
     pauseActiveClass: 'cycle-pause-active',
+    pausePlayingClass: 'cycle-pause-playing',
     pauseAriaLabel: 'Pause slideshow',
     resumeAriaLabel: 'Resume slideshow'
 });

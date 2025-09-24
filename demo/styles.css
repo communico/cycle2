@@ -61,6 +61,16 @@ body {
   background: #1e40af;
 }
 
+.demo-controls .cycle-pause-playing {
+  background: #059669;
+  color: #fff;
+}
+
+.demo-controls .cycle-pause-playing:hover,
+.demo-controls .cycle-pause-playing:focus-visible {
+  background: #047857;
+}
+
 .demo-controls .cycle-pause-active {
   background: #f59e0b;
   color: #1f2933;
