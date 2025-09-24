@@ -1,8 +1,6 @@
 function initializeDemo() {
 	const $slideshow = $(".cycle-slideshow");
-	const $next = $(".cycle-next");
-	const $prev = $(".cycle-prev");
-	const $carousel = $(".demo-carousel");
+	const $pause = $(".cycle-pause");
 
 	if (!$slideshow.length) {
 		return;
@@ -11,6 +9,14 @@ function initializeDemo() {
 	$slideshow.cycle({
 		slides: "> img",
 		autoHeight: "calc",
+	});
+
+	$slideshow.on("cycle-paused", () => {
+		$pause.text("Resume slideshow");
+	});
+
+	$slideshow.on("cycle-resumed", () => {
+		$pause.text("Pause slideshow");
 	});
 }
 

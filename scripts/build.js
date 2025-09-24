@@ -26,6 +26,8 @@ const mainSources = [
   'jquery.cycle2.loader.js',
   'jquery.cycle2.pager.js',
   'jquery.cycle2.prevnext.js',
+  'jquery.cycle2.pause.js',
+  'jquery.cycle2.keyboard.js',
   'jquery.cycle2.progressive.js',
   'jquery.cycle2.tmpl.js'
 ];
@@ -39,6 +41,8 @@ const pluginTargets = [
   { src: 'jquery.cycle2.loader.js', dest: ['core', 'jquery.cycle2.loader.min.js'], banner: pluginBanner },
   { src: 'jquery.cycle2.pager.js', dest: ['core', 'jquery.cycle2.pager.min.js'], banner: pluginBanner },
   { src: 'jquery.cycle2.prevnext.js', dest: ['core', 'jquery.cycle2.prevnext.min.js'], banner: pluginBanner },
+  { src: 'jquery.cycle2.pause.js', dest: ['core', 'jquery.cycle2.pause.min.js'], banner: pluginBanner },
+  { src: 'jquery.cycle2.keyboard.js', dest: ['core', 'jquery.cycle2.keyboard.min.js'], banner: pluginBanner },
   { src: 'jquery.cycle2.progressive.js', dest: ['core', 'jquery.cycle2.progressive.min.js'], banner: pluginBanner },
   { src: 'jquery.cycle2.tmpl.js', dest: ['core', 'jquery.cycle2.tmpl.min.js'], banner: pluginBanner },
   { src: 'jquery.cycle2.caption2.js', dest: ['plugin', 'jquery.cycle2.caption2.min.js'], banner: pluginBanner },

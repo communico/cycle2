@@ -60,6 +60,21 @@ $.extend($.fn.cycle.defaults, {
 $(document).on( 'cycle-initialized', function( e, opts ) {
     var next = opts.API.getComponent( 'next' );
     var prev = opts.API.getComponent( 'prev' );
+    var root = opts.container && opts.container[0];
+
+    if (root) {
+        if (next && next.length) {
+            next.each(function() {
+                $(this).data('cycleControlFor', root);
+            });
+        }
+
+        if (prev && prev.length) {
+            prev.each(function() {
+                $(this).data('cycleControlFor', root);
+            });
+        }
+    }
 
     enhanceControlAccess( next, opts.nextAriaLabel, function() {
         opts.API.next();
@@ -120,6 +135,8 @@ $(document).on( 'cycle-destroyed', function( e, opts ) {
     var next = opts.API.getComponent( 'next' );
     prev.off( opts.nextEvent ).off( 'keydown.cycle' );
     next.off( opts.prevEvent ).off( 'keydown.cycle' );
+    prev.removeData('cycleControlFor');
+    next.removeData('cycleControlFor');
     opts.container.off( 'swipeleft.cycle swiperight.cycle swipeLeft.cycle swipeRight.cycle swipeUp.cycle swipeDown.cycle' );
 });
 

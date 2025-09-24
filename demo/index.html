@@ -10,20 +10,22 @@
 		<header class="page-header">
 			<h1>Cycle2 Development Demo</h1>
 			<p>
-				Use the buttons below or press the left and right arrow keys after
-				focusing a control.
+				Use the controls below or press the arrow keys after focusing a button.
+				You can pause the carousel at any time to inspect a slide.
 			</p>
 		</header>
 
 		<main>
 			<section class="demo-section">
-				<div class="demo-carousel" tabindex="0">
+				<div class="demo-carousel">
 					<div
+						tabindex="0"
 						class="cycle-slideshow"
 						data-cycle-slides="> img"
 						data-cycle-timeout="3000"
 						data-cycle-next=".cycle-next"
 						data-cycle-prev=".cycle-prev"
+						data-cycle-pause=".cycle-pause"
 						data-cycle-pager=".cycle-pager"
 					>
 						<img
@@ -42,6 +44,7 @@
 
 					<div class="demo-controls">
 						<button class="cycle-prev" type="button">Previous slide</button>
+						<button class="cycle-pause" type="button">Pause slideshow</button>
 						<button class="cycle-next" type="button">Next slide</button>
 					</div>
 					<div class="cycle-pager"></div>
@@ -59,6 +62,7 @@
 		<script src="/src/jquery.cycle2.pager.js"></script>
 		<script src="/src/jquery.cycle2.prevnext.js"></script>
 		<script src="/src/jquery.cycle2.progressive.js"></script>
+		<script src="/src/jquery.cycle2.pause.js"></script>
 		<script src="/src/jquery.cycle2.tmpl.js"></script>
 		<script src="/src/jquery.cycle2.keyboard.js"></script>
 		<script src="/demo/main.js"></script>
