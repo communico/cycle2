@@ -548,14 +548,32 @@ $.fn.cycle.API = {
     getComponent: function( name ) {
         var opts = this.opts();
         var selector = opts[name];
-        if (typeof selector === 'string') {
-            // if selector is a child, sibling combinator, adjancent selector then use find, otherwise query full dom
-            return (/^\s*[\>|\+|~]/).test( selector ) ? opts.container.find( selector ) : $( selector );
-        }
-        if (selector.jquery)
+        var parent;
+        var result;
+
+        if ( !selector )
+            return $();
+
+        if ( selector.jquery )
             return selector;
-        
-        return $(selector);
+
+        if ( typeof selector === 'string' ) {
+            // Prefer controls scoped to the slideshow or its immediate wrapper before falling back to the document.
+            result = opts.container.find( selector );
+            if ( result.length )
+                return result;
+
+            parent = opts.container.parent();
+            if ( parent && parent.length ) {
+                result = parent.find( selector );
+                if ( result.length )
+                    return result;
+            }
+
+            return $( selector );
+        }
+
+        return $( selector );
     },
 
     stackSlides: function( curr, next, fwd ) {
